@@ -1,0 +1,35 @@
+{
+  "name": "welp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server",
+    "build": "webpack --mode production -w"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "body-parser": "^1.18.3",
+    "css-loader": "^0.28.11",
+    "express": "^4.16.3",
+    "moment": "^2.22.2",
+    "nodemon": "^1.17.5",
+    "pg": "^7.4.3",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "sequelize": "^4.37.10",
+    "style-loader": "^0.21.0"
+  },
+  "devDependencies": {
+    "webpack": "^4.10.2",
+    "webpack-cli": "^2.1.4"
+  }
+}
