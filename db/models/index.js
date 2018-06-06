@@ -167,7 +167,7 @@ const Misc = db.define('misc', {
 //  Misc.belongsTo(Restaurant);
 
 
-db.sync({ force: true })
+db.sync({ force: false })
   .then(() => {
     console.log('tables created');
   })

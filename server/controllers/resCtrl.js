@@ -13,7 +13,7 @@ const resCtrl = {
       })
       .catch((err) => console.log('failed insert restaurant dummies ', err))
  //     res.status(201).send(data)
-    db.queryInterface.bulkInsert('hours', data.hours1Data)
+    db.queryInterface.bulkInsert('hours', data.hoursData)
       .then((data) => {
       console.log('inserted hours dummies ', data);
   //    res.status(201).send(data)

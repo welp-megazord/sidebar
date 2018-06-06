@@ -15,6 +15,11 @@
   color: #1e66d2;
 }
 
+:local(.preReset) {
+  font-family: 'Times New Roman';
+  margin: 0;
+}
+
 :local(.gray) {
   color: #a3a3a3;
 }

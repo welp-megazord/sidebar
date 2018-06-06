@@ -32,22 +32,24 @@ export default class Details extends Component{
         <table className={styles.table}>
           <tr>
             <td className={[styles.green, styles.widthCol1, styles.center].join(' ')}><i class="far fa-clock"></i></td>
-            <td className={styles.grayBorder}>Today <span className={styles.bold}>{today} </span>
+            <td className={styles.grayBorder}><pre className={styles.preReset}>Today  <span className={styles.bold}>{today} 
               {
                 now >= parseInt(slicedYou) * 60 + min(slicedYou) && now <= (parseInt(oneTime(slicedYou)) + 12) * 60 + min(oneTime(slicedYou)) ?
-                  <span className={[styles.green, styles.bottom].join(' ')}>Open now</span>
+                  <span className={[styles.green, styles.bottom].join(' ')}>  Open now</span>
                   :
                   slicedYou.length < 25 ?
-                    <span className={[styles.red, styles.bottom].join(' ')}>Closed now</span>
+                    <span className={[styles.red, styles.bottom].join(' ')}>  Closed now</span>
                     :
                     now < (parseInt(twoTimes(slicedYou)) + 12) * 60 + min(twoTimes(slicedYou)) ?
-                      <span className={[styles.red, styles.bottom].join(' ')}>Closed now</span>
+                      <span className={[styles.red, styles.bottom].join(' ')}>  Closed now</span>
                       :
                       now <= (parseInt(oneTime(twoTimes(slicedYou))) + 12) * 60 + min(oneTime(twoTimes(slicedYou))) ?
-                        <span className={[styles.green, styles.bottom].join(' ')}>Open now</span>
+                        <span className={[styles.green, styles.bottom].join(' ')}>  Open now</span>
                         :
-                        <span className={[styles.red, styles.bottom].join(' ')}>Closed now</span>
-              }
+                        <span className={[styles.red, styles.bottom].join(' ')}>  Closed now</span>
+                      }
+                </span>
+              </pre>
             </td>
           </tr>
           <tr>
@@ -88,7 +90,10 @@ export default class Details extends Component{
                       health === 'D' ?
                         <span className={[styles.gray, styles.help].join(' ')}><i class="fab fa-dochub"></i></span>
                         :
-                        <span className={[styles.red, styles.f, styles.help].join(' ')}><i class="fas fa-fighter-jet"></i></span>
+                        health === 'E' ?
+                          <span className={[styles.green, styles.f, styles.help].join(' ')}><i class="fab fa-internet-explorer"></i></span>
+                          :
+                          <span className={[styles.red, styles.f, styles.help].join(' ')}><i class="fas fa-fighter-jet"></i></span>
               }     
             </td>
               <td className={[styles.blue, styles.bold, styles.underline, styles.help].join(' ')}>Health Score</td>

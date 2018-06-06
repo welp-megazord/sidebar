@@ -15,21 +15,27 @@ export default class Home extends Component{
   }
 
   componentDidMount() {
+    //random search on refresh
+    
     this.addRestaurants();
+    
   }
 
   addRestaurants() {
-    axios.post('/api/restaurants')
-      .then((data) => {
-        this.getDetails();
-        this.getHours();
-        this.getMisc();
-      })
-      .catch((err) => console.log('err from post ', err))
+    const e = Math.floor(Math.random() * 100 + 1);
+    // axios.post('/api/restaurants')
+    //   .then((data) => {
+        this.getDetails(e);
+        this.getHours(e);
+        this.getMisc(e);
+      // })
+      // .catch((err) => console.log('err from post ', err))
+
+      console.log('searching for id ', e)
   }
 
-  getDetails() {
-    axios('/api/details', {params: { rid: 2 }})
+  getDetails(e) {
+    axios('/api/details', {params: { rid: e }})
       .then(details => {
         delete details.data[0].id;
         delete details.data[0].rid;
@@ -40,8 +46,8 @@ export default class Home extends Component{
       })
   }
 
-  getHours() {
-    axios('/api/hours', {params : { rid: 1 }})
+  getHours(e) {
+    axios('/api/hours', {params : { rid: e }})
       .then(hours => {
         delete hours.data[0].id;
         delete hours.data[0].rid
@@ -52,8 +58,8 @@ export default class Home extends Component{
       })
   }
 
-  getMisc() {
-    axios('/api/misc', {params: { rid: 2 }})
+  getMisc(e) {
+    axios('/api/misc', {params: { rid: e }})
       .then(misc => {
         delete misc.data[0].id;
         delete misc.data[0].rid;
