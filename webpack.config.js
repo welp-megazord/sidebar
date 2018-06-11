@@ -16,7 +16,7 @@ module.exports = {
         exclude: [/node_modules/],
         use: [{
           loader: 'babel-loader',
-          options: { presets: ['env', 'react'] }
+          options: { presets: [['env', { "modules": false }], 'react', 'stage-0'] }
         }],
       },
       {
@@ -27,5 +27,5 @@ module.exports = {
   },
   performance: {
     hints: false
-  }
+  },
 }

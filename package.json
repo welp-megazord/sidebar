@@ -6,7 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server",
-    "build": "webpack --mode production -w"
+    "build": "webpack --mode production -w",
+    "jest": "jest",
+    "jest:watch": "jest --watch",
+    "jest:coverage": "jest --coverage"
   },
   "keywords": [],
   "author": "",
@@ -29,7 +32,41 @@
     "style-loader": "^0.21.0"
   },
   "devDependencies": {
+    "babel-jest": "^23.0.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-to-json": "^3.3.4",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^23.1.0",
+    "regenerator-runtime": "^0.11.1",
     "webpack": "^4.10.2",
     "webpack-cli": "^2.1.4"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.(jsx|js)?$": "babel-jest"
+    },
+    "moduleDirectories": ["node_modules", "bower_components", "shared"],
+    "moduleFileExtensions": ["js", "jsx"],
+    "moduleNameMapper": {
+      "^config$": "<rootDir>/configs/app-config/js",
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__",
+      "\\.(css|less)$": "identity-obj-proxy"
+    },
+    "modulePaths": ["/shared/vendor/modules"],
+    "collectCoverageFrom": [
+      "**/*.component.{js,jsx}",
+      "!**/node_modules/**"
+    ],
+    "coverageReporters": [
+      "text-summary"
+    ],
+    "setupFiles": [
+      "./test/jestsetup.jsx"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
   }
 }

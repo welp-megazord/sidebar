@@ -31,7 +31,12 @@ export default class Details extends Component{
       <div>
         <table className={styles.table}>
           <tr>
-            <td className={[styles.green, styles.widthCol1, styles.center].join(' ')}><i class="far fa-clock"></i></td>
+            { 
+              now >= parseInt(slicedYou) * 60 + min(slicedYou) && now <= (parseInt(oneTime(slicedYou)) + 12) * 60 + min(oneTime(slicedYou)) || now >= (parseInt(twoTimes(slicedYou)) + 12) * 60 + min(twoTimes(slicedYou)) && now <= (parseInt(oneTime(twoTimes(slicedYou))) + 12) * 60 + min(oneTime(twoTimes(slicedYou))) ?
+              <td className={[styles.green, styles.widthCol1, styles.center].join(' ')}><i class="far fa-clock"></i></td>
+              :
+              <td className={[styles.red, styles.widthCol1, styles.center].join(' ')}><i class="far fa-clock"></i></td>
+            }
             <td className={styles.grayBorder}><pre className={styles.preReset}>Today  <span className={styles.bold}>{today} 
               {
                 now >= parseInt(slicedYou) * 60 + min(slicedYou) && now <= (parseInt(oneTime(slicedYou)) + 12) * 60 + min(oneTime(slicedYou)) ?

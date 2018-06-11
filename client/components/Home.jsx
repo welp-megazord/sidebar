@@ -31,7 +31,8 @@ export default class Home extends Component{
       // })
       // .catch((err) => console.log('err from post ', err))
 
-      console.log('searching for id ', e)
+      console.log('searching for restaurant id ', e)
+      
   }
 
   getDetails(e) {
@@ -50,7 +51,7 @@ export default class Home extends Component{
     axios('/api/hours', {params : { rid: e }})
       .then(hours => {
         delete hours.data[0].id;
-        delete hours.data[0].rid
+        delete hours.data[0].rid;
         this.setState({ hours: hours.data[0] })
       })
       .catch(err => {

@@ -1,14 +1,105 @@
-const restaurantData = [{
-  name: 'Restaurant A'
-}, {
-  name: 'Restaurant B'
-}, {
-  name: 'Restaurant C'
-}, {
-  name: 'Restaurant D'
-}, {
-  name: 'Restaurant E'
-}];
+const restaurantData = [
+  { name: 'Death Eater\'s Deadly Prophecy of Revenge' },
+  { name: 'The Deadly Dark Mark of Azkaban' },
+  { name: 'Dark Wizard\'s Dark Cruciatus Curse of the Dark Arts' },
+  { name: 'Tom Riddle\'s Deadly Prophecy that Shall not be Named' },
+  { name: 'The Deadly Cruciatus Curse of Revenge' },
+  { name: 'Lord Voldemort\'s Deadly Philosopher\'s Stone of the Pure Blood' },
+  { name: 'Tom\'s Unforgiveable Dark Mark that Shall not be Named' },
+  { name: 'Riddle\'s Unforgiveable Elder Wand of Azkaban' },
+  { name: 'Deathly Unforgiveable Elder Wand that Shall not be Named' },
+  { name: 'Deathly Deadly Philosopher\'s Stone that Shall not be Named' },
+  { name: 'Dementor\'s Dark Killing Curse of the Dark Lord' },
+  { name: 'Slytherin Dark Imperius Curse of the Pure Blood' },
+  { name: 'Deathly Dark Prophecy of the Dark Lord' },
+  { name: 'Dark Wizard\'s Deadly Horcrux of Azkaban' },
+  { name: 'Riddle\'s Deathly Killing Curse of the Dark Lord' },
+  { name: 'The Unforgiveable Cruciatus Curse of Azkaban' },
+  { name: 'Dark Wizard\'s Deathly Horcrux of Revenge' },
+  { name: 'The Deathly Dark Mark of the Pure Blood' },
+  { name: 'Tom Riddle\'s Dark Horcrux of Azkaban' },
+  { name: 'Death Eater\'s Deathly Elder Wand that Shall not be Named' },
+  { name: 'Death Eater\'s Unforgiveable Dark Mark of the Pure Blood' },
+  { name: 'Dark Wizard\'s Deathly Prophecy of Revenge' },
+  { name: 'Slytherin Unforgiveable Prophecy of the Pure Blood' },
+  { name: 'Dementor\'s Dark Prophecy of Azkaban' },
+  { name: 'Tom Riddle\'s Unforgiveable Prophecy of the Dark Lord' },
+  { name: 'Deathly Dark Imperius Curse of the Dark Arts' },
+  { name: 'Riddle\'s Deadly Killing Curse of Revenge' },
+  { name: 'Deathly Unforgiveable Horcrux of Azkaban' },
+  { name: 'Tom\'s Dark Horcrux of the Dark Arts' },
+  { name: 'Dark Wizard\'s Deathly Killing Curse of the Dark Arts' },
+  { name: 'Deathly Dark Cruciatus Curse of the Pure Blood' },
+  { name: 'Tom\'s Unforgiveable Elder Wand of the Pure Blood' },
+  { name: 'Dark Wizard\'s Dark Philosopher\'s Stone of the Dark Lord' },
+  { name: 'Death Eater\'s Unforgiveable Curse of Revenge' },
+  { name: 'Slytherin Unforgiveable Curse of the Dark Arts' },
+  { name: 'Tom Riddle\'s Unforgiveable Prophecy of Revenge' },
+  { name: 'Lord Voldemort\'s Dark Horcrux of the Pure Blood' },
+  { name: 'The Deadly Prophecy of the Dark Lord' },
+  { name: 'Dementor\'s Unforgiveable Prophecy of Azkaban' },
+  { name: 'Lord Voldemort\'s Unforgiveable Dark Mark that Shall not be Named' },
+  { name: 'Dementor\'s Unforgiveable Elder Wand of Revenge' },
+  { name: 'Deathly Deadly Cruciatus Curse of the Dark Lord' },
+  { name: 'Deathly Dark Imperius Curse of the Dark Lord' },
+  { name: 'Tom Riddle\'s Unforgiveable Imperius Curse of Azkaban' },
+  { name: 'Dark Wizard\'s Unforgiveable Imperius Curse of Revenge' },
+  { name: 'Tom\'s Dark Killing Curse of the Dark Lord' },
+  { name: 'Dark Wizard\'s Deathly Cruciatus Curse of Revenge' },
+  { name: 'Dementor\'s Dark Philosopher\'s Stone of the Pure Blood' },
+  { name: 'Riddle\'s Unforgiveable Imperius Curse of the Dark Lord' },
+  { name: 'Lord Voldemort\'s Unforgiveable Philosopher\'s Stone of the Dark Arts' },
+  { name: 'Tom\'s Dark Elder Wand of Azkaban' },
+  { name: 'Dementor\'s Dark Killing Curse of the Pure Blood' },
+  { name: 'The Deadly Curse that Shall not be Named' },
+  { name: 'The Unforgiveable Horcrux of the Dark Arts' },
+  { name: 'Dementor\'s Unforgiveable Killing Curse that Shall not be Named' },
+  { name: 'Death Eater\'s Deadly Cruciatus Curse of Revenge' },
+  { name: 'Lord Voldemort\'s Deathly Imperius Curse of the Dark Lord' },
+  { name: 'Dark Wizard\'s Dark Cruciatus Curse of the Dark Arts' },
+  { name: 'Tom\'s Unforgiveable Horcrux of Azkaban' },
+  { name: 'Slytherin Dark Elder Wand of Revenge' },
+  { name: 'Deathly Deathly Philosopher\'s Stone that Shall not be Named' },
+  { name: 'Death Eater\'s Deadly Killing Curse of the Pure Blood' },
+  { name: 'Dementor\'s Dark Killing Curse of the Pure Blood' },
+  { name: 'Death Eater\'s Deathly Dark Mark of the Dark Arts' },
+  { name: 'Dementor\'s Dark Cruciatus Curse of the Dark Lord' },
+  { name: 'Deathly Unforgiveable Curse that Shall not be Named' },
+  { name: 'Dark Wizard\'s Dark Dark Mark of the Dark Arts' },
+  { name: 'Dark Wizard\'s Unforgiveable Elder Wand of the Pure Blood' },
+  { name: 'Dementor\'s Deathly Dark Mark of the Dark Lord' },
+  { name: 'Riddle\'s Deathly Dark Mark of Revenge' },
+  { name: 'Deathly Dark Imperius Curse of the Dark Lord' },
+  { name: 'Tom\'s Deathly Imperius Curse of the Dark Arts' },
+  { name: 'Dark Wizard\'s Unforgiveable Imperius Curse of the Dark Lord' },
+  { name: 'Dementor\'s Deadly Cruciatus Curse of Azkaban' },
+  { name: 'Dementor\'s Deathly Philosopher\'s Stone of the Dark Arts' },
+  { name: 'Tom Riddle\'s Deadly Philosopher\'s Stone of the Pure Blood' },
+  { name: 'Deathly Unforgiveable Dark Mark of the Dark Arts' },
+  { name: 'Death Eater\'s Unforgiveable Dark Mark of the Dark Lord' },
+  { name: 'Riddle\'s Deathly Killing Curse that Shall not be Named' },
+  { name: 'Tom Riddle\'s Deathly Prophecy that Shall not be Named' },
+  { name: 'Deathly Deathly Cruciatus Curse that Shall not be Named' },
+  { name: 'Tom Riddle\'s Unforgiveable Elder Wand of the Dark Arts' },
+  { name: 'Slytherin Deadly Imperius Curse of the Dark Lord' },
+  { name: 'Lord Voldemort\'s Dark Prophecy of the Dark Lord' },
+  { name: 'Lord Voldemort\'s Deathly Prophecy of Revenge' },
+  { name: 'Riddle\'s Dark Prophecy of the Dark Arts' },
+  { name: 'Death Eater\'s Dark Cruciatus Curse of Azkaban' },
+  { name: 'Lord Voldemort\'s Unforgiveable Cruciatus Curse of the Pure Blood' },
+  { name: 'Slytherin Dark Prophecy of the Dark Lord' },
+  { name: 'The Deadly Prophecy of the Dark Lord' },
+  { name: 'Deathly Deadly Curse of Azkaban' },
+  { name: 'Tom Riddle\'s Unforgiveable Horcrux of Revenge' },
+  { name: 'Tom Riddle\'s Deathly Imperius Curse of the Dark Lord' },
+  { name: 'Death Eater\'s Unforgiveable Horcrux of the Pure Blood' },
+  { name: 'Tom Riddle\'s Deadly Philosopher\'s Stone of the Dark Arts' },
+  { name: 'Dark Wizard\'s Dark Elder Wand of the Dark Lord' },
+  { name: 'Deathly Dark Dark Mark of the Dark Arts' },
+  { name: 'Dementor\'s Deathly Killing Curse of the Dark Lord' },
+  { name: 'Deathly Unforgiveable Curse of Azkaban' },
+  { name: 'Dementor\'s Deathly Curse that Shall not be Named' }
+];
 
 const hoursData = [
   {rid: 1, Mon: '11:00 am - 10:00 pm', Tue: '11:00 am - 2:00 pm\n5:00 pm - 11:00 pm', Wed: '11:00 am - 2:00 pm\n5:00 pm - 11:00 pm', Thu: '11:00 am - 2:00 pm\n5:00 pm - 11:00 pm', Fri: '11:00 am - 10:00 pm', Sat: '11:00 am - 2:00 pm\n5:00 pm - 11:00 pm', Sun: '11:00 am - 10:00 pm' }, 
@@ -326,6 +417,38 @@ module.exports = {
 
 
 
+
+// const restGen = (rid=0, results=[]) => {
+
+//   const adjOrNo = Math.floor(Math.random() * 2);
+
+//   const random = (arr) => {
+//     return arr[Math.floor(Math.random() * arr.length)];
+//   }
+
+//   const starter = ['Lord Voldemort\'s', 'The', 'Deathly', 'Death Eater\'s', 'Tom\'s', 'Riddle\'s', 'Tom Riddle\'s', 'Slytherin', 'Dementor\'s', 'Dark Wizard\'s']
+
+//   const adj = [' Unforgiveable', ' Deadly', ' Deathly', ' Dark']
+
+//   const middle = [' Horcrux ', ' Dark Mark ', ' Elder Wand ', ' Imperius Curse ', ' Killing Curse ', ' Cruciatus Curse ', ' Prophecy ', ' Philosopher\'s Stone ', ' Curse ']
+
+//   const closer = ['of the Dark Arts', 'of Azkaban', 'of Revenge', 'of the Pure Blood', 'that Shall not be Named', 'of the Dark Lord']
+  
+//   const name = random(starter) + random(adj) + random(middle) + random(closer);    
+
+//   const rest = { name }
+
+//   if (rid < 100) {
+//     results.push(rest)
+//     rid += 1
+//     restGen(rid, results)
+//   }
+//   return results;
+// }
+
+
+
+
 // const hoursGen = (rid=0, results=[]) => {
    
 //   const hours = { rid }
@@ -465,21 +588,4 @@ module.exports = {
 //   }
 
 //   return results
-// }
-
-
-
-
-
-//unfinished
-// const restGen = (rid=0, result=[]) => {
-
-//   const starter = ['Lord Voldemort\'s', 'The', 'Deathly', 'Death Eater\'s', 'Tom\'s', 'Riddle\'s', 'Tom Riddle\'s', 'Slytherin', 'Dementor\'s', 'Dark Wizard\'s']
-
-//   const adj = ['Unforgiveable', 'Deadly', 'Deathly']
-
-//   const middle = ['Horcrux', 'Dark Mark', 'Elder Wand', 'Imperius Curse', 'Killing Curse', 'Cruciatus Curse', 'Prophecy', 'Philosopher\'s Stone', 'Curse']
-
-//   const closer = ['of the Dark Arts', 'of Azkaban', 'of Revenge', 'of the Pure Blood', 'that Shall not be Named', 'of the Dark Lord']
-  
 // }

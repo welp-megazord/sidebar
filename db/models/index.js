@@ -17,10 +17,6 @@ const Detail = db.define('detail', {
     type: Sequelize.STRING,
     allowNull: false
   },
-  // today2: {
-  //   type: Sequelize.STRING,
-  //   allowNull: true
-  // },
   Price_Range: {
     type: Sequelize.STRING,
     allowNull: false
@@ -157,15 +153,12 @@ const Misc = db.define('misc', {
   }
 }, { timestamps: false });
 
-// Restaurant.belongsTo(Hour);
-// Hour.belongsTo(Restaurant);
-
-//  Restaurant.belongsTo(Detail);
-//  Detail.belongsTo(Restaurant);
-
-//  Misc.belongsTo(Restaurant);
-//  Misc.belongsTo(Restaurant);
-
+Hour.belongsTo(Restaurant, { foreignKey: { name: 'rid', allowNull: false, constraints: false }, onDelete:  'CASCADE'});
+Restaurant.hasOne(Hour, { foreignKey: { name: 'rid', allowNull: false, constraints: false }, onDelete: 'CASCADE'});
+Detail.belongsTo(Restaurant, { foreignKey: { name: 'rid', allowNull: false, constraints: false }, onDelete: 'CASCADE'});
+Restaurant.hasOne(Detail, { foreignKey: { name: 'rid', allowNull: false, constraints: false }, onDelete: 'CASCADE'});
+Misc.belongsTo(Restaurant, { foreignKey: { name: 'rid', allowNull: false, constraints: false }, onDelete: 'CASCADE'});
+Restaurant.hasOne(Misc, { foreignKey: { name: 'rid', allowNull: false, constraints: false }, onDelete: 'CASCADE'});
 
 db.sync({ force: false })
   .then(() => {
