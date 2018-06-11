@@ -8,10 +8,20 @@ export default class Details extends Component{
   }
 
   render() {
-    const isOpen1 = this.props.isOpen1;
-    const isOpen2 = this.props.isOpen2;
     const hours = this.props.hours;
     const today = hours[moment().format('ddd')];
+    const sliceMe = "'" + today + "'";
+    const slicedYou = sliceMe.slice(1,-1);
+    const now = moment().format('H') * 60 + moment().format('m') * 1;
+    const min = (time) => {
+      return time.slice(0,5).replace(/:/, '').trim().slice(2) * 1;
+    }
+    const oneTime = (time) => {
+      return time.slice(10).trim();
+    }
+    const twoTimes = (time) => {
+      return time.slice(-18).replace(/\n/, '').trim();
+    }
     const details = this.props.details;
     const priceString = "'" + details.Price_Range + "'";
     const price = Math.abs(priceString.slice(4,-1));
@@ -22,18 +32,27 @@ export default class Details extends Component{
         <table className={styles.table}>
           <tr>
             { 
-              isOpen1 || isOpen2 ?
-                <td className={[styles.green, styles.widthCol1, styles.center].join(' ')}><i class="far fa-clock"></i></td>
-                :
-                <td className={[styles.red, styles.widthCol1, styles.center].join(' ')}><i class="far fa-clock"></i></td>
+              now >= parseInt(slicedYou) * 60 + min(slicedYou) && now <= (parseInt(oneTime(slicedYou)) + 12) * 60 + min(oneTime(slicedYou)) || now >= (parseInt(twoTimes(slicedYou)) + 12) * 60 + min(twoTimes(slicedYou)) && now <= (parseInt(oneTime(twoTimes(slicedYou))) + 12) * 60 + min(oneTime(twoTimes(slicedYou))) ?
+              <td className={[styles.green, styles.widthCol1, styles.center].join(' ')}><i class="far fa-clock"></i></td>
+              :
+              <td className={[styles.red, styles.widthCol1, styles.center].join(' ')}><i class="far fa-clock"></i></td>
             }
             <td className={styles.grayBorder}><pre className={styles.preReset}>Today  <span className={styles.bold}>{today} 
               {
-                isOpen1 || isOpen2 ?
+                now >= parseInt(slicedYou) * 60 + min(slicedYou) && now <= (parseInt(oneTime(slicedYou)) + 12) * 60 + min(oneTime(slicedYou)) ?
                   <span className={[styles.green, styles.bottom].join(' ')}>  Open now</span>
                   :
-                  <span className={[styles.red, styles.bottom].join(' ')}>  Closed now</span>
-              }
+                  slicedYou.length < 25 ?
+                    <span className={[styles.red, styles.bottom].join(' ')}>  Closed now</span>
+                    :
+                    now < (parseInt(twoTimes(slicedYou)) + 12) * 60 + min(twoTimes(slicedYou)) ?
+                      <span className={[styles.red, styles.bottom].join(' ')}>  Closed now</span>
+                      :
+                      now <= (parseInt(oneTime(twoTimes(slicedYou))) + 12) * 60 + min(oneTime(twoTimes(slicedYou))) ?
+                        <span className={[styles.green, styles.bottom].join(' ')}>  Open now</span>
+                        :
+                        <span className={[styles.red, styles.bottom].join(' ')}>  Closed now</span>
+                      }
                 </span>
               </pre>
             </td>

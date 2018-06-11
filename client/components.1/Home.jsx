@@ -3,7 +3,6 @@ import Details from './Details.jsx';
 import Hours from './Hours.jsx';
 import Misc from './Misc.jsx';
 import axios from 'axios';
-import moment from 'moment';
 
 export default class Home extends Component{
   constructor(props) {
@@ -11,7 +10,7 @@ export default class Home extends Component{
     this.state = {
       details: {},
       hours: {},
-      misc: {},
+      misc: {}
     }
   }
 
@@ -19,7 +18,7 @@ export default class Home extends Component{
     //random search on refresh
     
     this.addRestaurants();
-
+    
   }
 
   addRestaurants() {
@@ -73,47 +72,13 @@ export default class Home extends Component{
   }
 
   render() {
-    const hours = this.state.hours;
-    const now = moment().format('H') * 60 + moment().format('m') * 1;
-    const today = moment().format('ddd');
-    const min = (time) => {
-      return time.slice(0,5).replace(/:/, '').trim().slice(2) * 1;
-    }
-    const oneTime = (time) => {
-      return time.slice(10).trim();
-    }
-    const twoTimes = (time) => {
-      return time.slice(-18).replace(/\n/, '').trim();
-    }    
-
-    Object.keys(hours).map(day => {
-      const open1 = parseInt(hours[day]) * 60 + min(hours[day]);
-      const closed1 = (parseInt(oneTime(hours[day])) + 12) * 60 + min(oneTime(hours[day]));
-      const open2 = (parseInt(twoTimes(hours[day])) + 12) * 60 + min(twoTimes(hours[day]));
-      const closed2 = (parseInt(oneTime(twoTimes(hours[day]))) + 12) * 60 + min(oneTime(twoTimes(hours[day])));
-
-      day !== today ?
-        ''
-        :
-        now >= open1 && now <= closed1 ?
-          this.state.isOpen1 = true
-          :
-          now < open2 ?
-            this.state.early = true
-            :
-            now >= open2 && now <= closed2 ?
-              this.state.isOpen2 = true
-              :
-              this.state.isOpen2
-    });
-
     return(
       <div>
         <div>
-          <Details details={this.state.details} hours={this.state.hours} isOpen1={this.state.isOpen1} isOpen2={this.state.isOpen2}/>
+          <Details details={this.state.details} hours={this.state.hours}/>
         </div>
         <div>
-          <Hours hours={this.state.hours} isOpen1={this.state.isOpen1} isOpen2={this.state.isOpen2} early={this.state.early}/>
+          <Hours hours={this.state.hours}/>
         </div>
         <div>
           <Misc misc={this.state.misc}/>

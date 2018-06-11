@@ -1,0 +1,69 @@
+:local(.closed) {
+  color: #dc143c;
+  font-size: 0.8em;
+  vertical-align: bottom;
+}
+
+:local(.day) {
+  font-weight: 700;
+  width: 3em;
+  vertical-align: top;
+}
+
+:local(.editBusiness) {
+  color: #6ba2d1;
+}
+
+:local(.editBusinessName:hover) {
+  cursor: not-allowed;
+  text-decoration: underline;
+}
+
+:local(.font_times) {
+  font-family: 'Times New Roman';
+}
+
+:local(.heightUp) {
+  line-height: 1.5em;
+}
+
+:local(.margin) {
+  margin: 0
+}
+
+:local(.open) {
+  color: #4bc333;
+  font-size: 0.8em;
+  vertical-align: bottom;
+}
+
+:local(.row) {
+  line-height: 1;
+}
+
+:local(.table) {
+  border: 1;
+  clear: right;
+  float: right;
+  margin-right: 10%;
+  width: 17em;
+}
+
+:local(.td) {
+  margin: 0;
+  padding: 0;
+  vertical-align: top;
+}
+
+:local(.td2) {
+  width: 9em;
+}
+
+:local(.title) {
+  color: #dc143c;
+  font-size: 1.2em;
+}
+
+
+
+
