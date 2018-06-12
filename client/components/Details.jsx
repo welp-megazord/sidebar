@@ -45,13 +45,13 @@ export default class Details extends Component{
           <tr>
             <td className={styles.center}>
               {
-                Number(price) < 20 ?
+                Number(price) < 25 ?
                   <span><span className={styles.green}>$</span>$$$ </span>
                   :
-                  Number(price) < 50 ?
+                  Number(price) < 60 ?
                     <span><span className={styles.green}>$$</span>$$ </span> 
                     :
-                    Number(price) < 75 ?
+                    Number(price) < 80 ?
                       <span><span className={styles.green}>$$$</span>$ </span>
                       :
                       <span className={styles.green}>$$$$</span> 

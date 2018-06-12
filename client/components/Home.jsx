@@ -104,7 +104,7 @@ export default class Home extends Component{
             now >= open2 && now <= closed2 ?
               this.state.isOpen2 = true
               :
-              this.state.isOpen2
+              ''
     });
 
     return(

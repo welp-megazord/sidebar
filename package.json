@@ -29,6 +29,7 @@
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "sequelize": "^4.37.10",
+    "sinon": "^6.0.0",
     "style-loader": "^0.21.0"
   },
   "devDependencies": {
@@ -47,26 +48,32 @@
     "transform": {
       "^.+\\.(jsx|js)?$": "babel-jest"
     },
-    "moduleDirectories": ["node_modules", "bower_components", "shared"],
-    "moduleFileExtensions": ["js", "jsx"],
+    "moduleDirectories": [
+      "node_modules",
+      "bower_components",
+      "shared"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "json"
+    ],
     "moduleNameMapper": {
       "^config$": "<rootDir>/configs/app-config/js",
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__",
       "\\.(css|less)$": "identity-obj-proxy"
     },
-    "modulePaths": ["/shared/vendor/modules"],
-    "collectCoverageFrom": [
-      "**/*.component.{js,jsx}",
-      "!**/node_modules/**"
+    "modulePaths": [
+      "/shared/vendor/modules"
     ],
-    "coverageReporters": [
-      "text-summary"
-    ],
+    "collectCoverage": true,
     "setupFiles": [
       "./test/jestsetup.jsx"
     ],
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
-    ]
+    ],
+    "notify": false,
+    "verbose": true
   }
 }

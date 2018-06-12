@@ -26,20 +26,19 @@ export default class Hours extends Component{
             <td className={[styles.td, styles.td2].join(' ')}><pre className={[styles.font_times, styles.td].join(' ')}>{hours[day]}</pre></td>
             <td className={styles.td}>
               {
-
                 day !== today ?
                   ''
                   :
                   isOpen1 ?
-                      <span className={styles.open}>Open now</span>
+                    <span className={styles.open}>Open now</span>
+                    :
+                    early ?
+                      <span className={styles.closed}>Closed now</span>
                       :
-                      early ?
-                        <span className={styles.closed}>Closed now</span>
+                      isOpen2 ?
+                        <span className={styles.open}><br />Open now</span>
                         :
-                        isOpen2 ?
-                          <span className={styles.open}><br />Open now</span>
-                          :
-                          <span className={styles.closed}><br />Closed now</span>
+                        <span className={styles.closed}><br />Closed now</span>
                 }
             </td>
           </tr>
