@@ -6,7 +6,7 @@ const detailsCtrl = {
       rid: req.query.rid
     }})
       .then(data => {
-   //     console.log('get details ', data);
+  //     console.log('get details ', data);
         res.status(200).send(data);
       })
       .catch(err => {
