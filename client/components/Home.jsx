@@ -24,20 +24,20 @@ export default class Home extends Component{
 
   addRestaurants() {
     const e = Math.floor(Math.random() * 100 + 1);
-    axios.post(('http://localhost:', process.env.db_port, '/api/restaurants'))
-      .then((data) => {
+//    axios.post('http://localhost:3002/api/details')
+//      .then((data) => {
         this.getDetails(e);
         this.getHours(e);
         this.getMisc(e);
-      })
-      .catch((err) => console.log('err from post ', err))
+//      })
+//      .catch((err) => console.log('err from post ', err))
 
       console.log('searching for restaurant id ', e)
       
   }
 
   getDetails(e) {
-    axios(('http://localhost:', process.env.db_port, '/api/details'), {params: { rid: e }})  
+    axios('http://localhost:3002/api/details', {params: { rid: e }})  
       .then(details => {
         delete details.data[0].id;
         delete details.data[0].rid;
@@ -49,7 +49,7 @@ export default class Home extends Component{
   }
 
   getHours(e) {
-    axios(('http://localhost:', process.env.db_port, '/api/hours'), {params : { rid: e }})
+    axios('http://localhost:3002/api/details', {params : { rid: e }})
       .then(hours => {
         delete hours.data[0].id;
         delete hours.data[0].rid;
@@ -61,7 +61,7 @@ export default class Home extends Component{
   }
 
   getMisc(e) {
-    axios(('http://localhost:', process.env.db_port, '/api/misc'), {params: { rid: e }})
+    axios('http://localhost:3002/api/details', {params: { rid: e }})
       .then(misc => {
         delete misc.data[0].id;
         delete misc.data[0].rid;

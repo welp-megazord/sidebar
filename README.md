@@ -4,7 +4,7 @@ Sidebar Component for Welp (All Hail Lord Voldemort)
 create .env file for:
 db_name= string
 db_username= string
-db_port= #
+db_port=3002
 db_pass= string
 
 
