@@ -49,7 +49,7 @@ export default class Home extends Component{
   }
 
   getHours(e) {
-    axios('http://localhost:3002/api/details', {params : { rid: e }})
+    axios('http://localhost:3002/api/hours', {params : { rid: e }})
       .then(hours => {
         delete hours.data[0].id;
         delete hours.data[0].rid;
@@ -61,7 +61,7 @@ export default class Home extends Component{
   }
 
   getMisc(e) {
-    axios('http://localhost:3002/api/details', {params: { rid: e }})
+    axios('http://localhost:3002/api/misc', {params: { rid: e }})
       .then(misc => {
         delete misc.data[0].id;
         delete misc.data[0].rid;

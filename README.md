@@ -1,6 +1,9 @@
 Sidebar Component for Welp (All Hail Lord Voldemort)
 
 
+
+bundle.js = https://s3-us-west-1.amazonaws.com/hr22welp-sidebar/bundle.js
+
 create .env file for:
 db_name= string
 db_username= string

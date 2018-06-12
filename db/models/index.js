@@ -171,7 +171,7 @@ module.exports = {
   Detail,
   Hour,
   Misc,
-  Restaurant
+  Restaurant  
 }
 
 
