@@ -160,7 +160,7 @@ Restaurant.hasOne(Detail, { foreignKey: { name: 'rid', allowNull: false, constra
 Misc.belongsTo(Restaurant, { foreignKey: { name: 'rid', allowNull: false, constraints: false }, onDelete: 'CASCADE'});
 Restaurant.hasOne(Misc, { foreignKey: { name: 'rid', allowNull: false, constraints: false }, onDelete: 'CASCADE'});
 
-db.sync({ force: false })
+db.sync({ force: true })
   .then(() => {
     console.log('tables created');
   })
