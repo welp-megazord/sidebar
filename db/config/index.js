@@ -1,6 +1,5 @@
 const Sequelize = require('sequelize');
-const { pass } = require('./config/config.js');
-const db = new Sequelize('details_welp', 'postgres', pass, {
+const db = new Sequelize(process.env.db_name, process.env.db_username, process.env.db_pass, {
   host: 'localhost',
   dialect: 'postgres'
 })
