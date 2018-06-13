@@ -24,7 +24,7 @@ export default class Home extends Component{
 
   addRestaurants() {
     const e = Math.floor(Math.random() * 100 + 1);
-    axios.post('http://localhost:3002/api/details')
+    axios.post('http://localhost:3002/api/restaurants')
       .then((data) => {
         this.getDetails(e);
         this.getHours(e);

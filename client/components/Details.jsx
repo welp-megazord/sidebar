@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from './Details.jsx'
+import styles from './Details.css'
 import moment from 'moment';
 
 export default class Details extends Component{
