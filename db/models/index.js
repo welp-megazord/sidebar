@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const { db } = require('../config');
+const { resCtrl } = require('../../server/controllers/resCtrl.js');
 
 const Restaurant = db.define('restaurant', {
   name: {
@@ -153,16 +154,16 @@ const Misc = db.define('misc', {
   }
 }, { timestamps: false });
 
-Hour.belongsTo(Restaurant, { foreignKey: { name: 'rid', allowNull: false, constraints: false }, onDelete:  'CASCADE'});
-Restaurant.hasOne(Hour, { foreignKey: { name: 'rid', allowNull: false, constraints: false }, onDelete: 'CASCADE'});
-Detail.belongsTo(Restaurant, { foreignKey: { name: 'rid', allowNull: false, constraints: false }, onDelete: 'CASCADE'});
-Restaurant.hasOne(Detail, { foreignKey: { name: 'rid', allowNull: false, constraints: false }, onDelete: 'CASCADE'});
-Misc.belongsTo(Restaurant, { foreignKey: { name: 'rid', allowNull: false, constraints: false }, onDelete: 'CASCADE'});
-Restaurant.hasOne(Misc, { foreignKey: { name: 'rid', allowNull: false, constraints: false }, onDelete: 'CASCADE'});
+// Hour.belongsTo(Restaurant, { foreignKey: { name: 'rid', allowNull: false, constraints: false }, onDelete:  'CASCADE'});
+// Restaurant.hasOne(Hour, { foreignKey: { name: 'rid', allowNull: false, constraints: false }, onDelete: 'CASCADE'});
+// Detail.belongsTo(Restaurant, { foreignKey: { name: 'rid', allowNull: false, constraints: false }, onDelete: 'CASCADE'});
+// Restaurant.hasOne(Detail, { foreignKey: { name: 'rid', allowNull: false, constraints: false }, onDelete: 'CASCADE'});
+// Misc.belongsTo(Restaurant, { foreignKey: { name: 'rid', allowNull: false, constraints: false }, onDelete: 'CASCADE'});
+// Restaurant.hasOne(Misc, { foreignKey: { name: 'rid', allowNull: false, constraints: false }, onDelete: 'CASCADE'});
 
-db.sync({ force: true })
+db.sync({ force: false })
   .then(() => {
-    console.log('tables created');
+//    resCtrl.post();
   })
   .catch(err => console.log('err in table create', err));
 

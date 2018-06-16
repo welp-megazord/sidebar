@@ -1,0 +1,33 @@
+version: '2'
+services:
+  web:
+    image: phwu123/side
+    networks:
+      [webnet]
+    ports:
+      - "3002:3002"
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+    links:
+      - db
+    command: npm start
+  db:
+    image: postgres:9.6
+    networks:
+      [webnet]
+    environment:
+      POSTGRES_DB: postgres    
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD:
+    volumes:
+      - db-data:/var/lib/data
+  proxy:
+    image: phwu123/prox
+    ports:
+      - "3900:3900"
+volumes: 
+  db-data:
+networks:
+  webnet:

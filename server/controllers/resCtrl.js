@@ -12,7 +12,7 @@ const resCtrl = {
         console.log('inserted restaurant dummies ', data); 
       })
       .catch((err) => console.log('failed insert restaurant dummies ', err))
- //     res.status(201).send(data)
+//     res.status(201).send(data)
     db.queryInterface.bulkInsert('hours', data.hoursData)
       .then((data) => {
       console.log('inserted hours dummies ', data);
@@ -28,7 +28,7 @@ const resCtrl = {
     db.queryInterface.bulkInsert('miscs', data.miscData)
       .then((data) => {
       console.log('inserted misc dummies ', data);
-      res.status(201).send(data)
+  //    res.status(201).send(data)
     })
       .catch((err) => console.log('failed insert misc dummies ', err))
   }
