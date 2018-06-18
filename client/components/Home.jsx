@@ -111,7 +111,7 @@ export default class Home extends Component{
 
     return(
       <div>
-        <div>{moment().format('ddd')}
+        <div>
           <Details details={this.state.details} hours={this.state.hours} isOpen1={this.state.isOpen1} isOpen2={this.state.isOpen2}/>
         </div>
         <div>
