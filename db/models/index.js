@@ -161,9 +161,9 @@ const Misc = db.define('misc', {
 // Misc.belongsTo(Restaurant, { foreignKey: { name: 'rid', allowNull: false, constraints: false }, onDelete: 'CASCADE'});
 // Restaurant.hasOne(Misc, { foreignKey: { name: 'rid', allowNull: false, constraints: false }, onDelete: 'CASCADE'});
 
-db.sync({ force: false })
+db.sync({ force: true })
   .then(() => {
-//    resCtrl.post();
+    resCtrl.post();
   })
   .catch(err => console.log('err in table create', err));
 

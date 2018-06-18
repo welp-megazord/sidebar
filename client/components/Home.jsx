@@ -30,11 +30,12 @@ export default class Home extends Component{
 //      })
 //      .catch((err) => console.log('err from post ', err))
       console.log('searching for restaurant id ', e)
+      console.log("The time is ", moment().format('HHmm'))
       
   }
 
   getDetails(e) {
-    axios('http://18.191.193.183:3002/api/details', {params: { rid: e }})  
+    axios('http://18.222.29.116:3002/api/details', {params: { rid: e }})  
       .then(details => {
         delete details.data[0].id;
         delete details.data[0].rid;
@@ -46,7 +47,7 @@ export default class Home extends Component{
   }
 
   getHours(e) {
-    axios('http://18.191.193.183:3002/api/hours', {params : { rid: e }})
+    axios('http://18.222.29.116:3002/api/hours', {params : { rid: e }})
       .then(hours => {
         delete hours.data[0].id;
         delete hours.data[0].rid;
@@ -58,7 +59,7 @@ export default class Home extends Component{
   }
 
   getMisc(e) {
-    axios('http://18.191.193.183:3002/api/misc', {params: { rid: e }})
+    axios('http://18.222.29.116:3002/api/misc', {params: { rid: e }})
       .then(misc => {
         delete misc.data[0].id;
         delete misc.data[0].rid;
@@ -87,7 +88,11 @@ export default class Home extends Component{
       const open1 = parseInt(hours[day]) * 60 + min(hours[day]);
       const closed1 = (parseInt(oneTime(hours[day])) + 12) * 60 + min(oneTime(hours[day]));
       const open2 = (parseInt(twoTimes(hours[day])) + 12) * 60 + min(twoTimes(hours[day]));
-      const closed2 = (parseInt(oneTime(twoTimes(hours[day]))) + 12) * 60 + min(oneTime(twoTimes(hours[day])));
+      let closed2 = (parseInt(oneTime(twoTimes(hours[day]))) + 12) * 60 + min(oneTime(twoTimes(hours[day])));
+      parseInt(oneTime(twoTimes(hours[day]))) + 12 === 0 ?
+        closed2 += 720
+        :
+        '';
 
       day !== today ?
         ''
@@ -95,7 +100,7 @@ export default class Home extends Component{
         now >= open1 && now <= closed1 ?
           this.state.isOpen1 = true
           :
-          now < open2 ?
+          now < open2 || hours[day].length < 25 ?
             this.state.early = true
             :
             now >= open2 && now <= closed2 ?
@@ -106,7 +111,7 @@ export default class Home extends Component{
 
     return(
       <div>
-        <div>
+        <div>{moment().format('ddd')}
           <Details details={this.state.details} hours={this.state.hours} isOpen1={this.state.isOpen1} isOpen2={this.state.isOpen2}/>
         </div>
         <div>
