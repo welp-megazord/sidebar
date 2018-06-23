@@ -4,6 +4,7 @@ const parser = require('body-parser');
 const path = require('path');
 require('../db/config');
 const cors = require('cors');
+require('./dataGenHelpers.js');
 
 const { router } = require('./router');
 
