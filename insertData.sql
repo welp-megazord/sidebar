@@ -1,0 +1,3 @@
+COPY hours (rid, "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun") FROM 'C:\Users\fuzz1\Desktop\Hack_Reactor\sidebar\static\hours.csv';
+COPY details (rid, "Today", "Price_Range", "Health_Score") FROM 'C:\Users\fuzz1\Desktop\Hack_Reactor\sidebar\static\details.csv';
+COPY miscs (rid, "Takes_Reservations", "TakeZout", "Accepts_Credit_Cards", "Accepts_Apple_Pay", "Good_For", "Parking", "Bike_Parking", "Wheelchair_Accessible", "Good_For_Kids", "Good_For_Groups", "Dogs_Allowed", "Attire", "Ambience", "Noise_Level", "Alcohol", "Outdoor_Seating", "Wifi", "Has_TV", "Caters", "Gender_Neutral_Restrooms","Smoking") FROM 'C:\Users\fuzz1\Desktop\Hack_Reactor\sidebar\static\misc.csv';

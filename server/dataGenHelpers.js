@@ -22,8 +22,9 @@ const generateTimes = (entries, index) => {
   }
 
   for(let j = 0; j < weekdays.length; j++) {
-    week += randomTime(5, 11) + 'am - ' + randomTime(3, 11) + 'pm\t';
+    weekdays[j] = randomTime(5, 11) + 'am - ' + randomTime(3, 11) + 'pm';
   }
+  week += weekdays.join('\t');
 
   return week + '\n';
 }
@@ -55,15 +56,18 @@ const generateMisc = (entries, index) => {
   const genAns = ['Yes', 'No', 'Yup', 'Nope', 'Yes', 'No', 'Maybe', 'Yes', 'Maybe', 'No', 'Possibly', 'No', 'Possibly', 'Maybe', 'Yes', 'You Wish', 'Yup', 'Nope', 'Yes', 'No', '?', 'Yes', 'None', 'Yes', 'Yes', 'None', 'None' ];
   const data = ['Takes_Reservations', 'TakeZout', 'Accepts_Credit_Cards', 'Accepts_Apple_Pay', 'Good_For', 'Parking', 'Bike_Parking', 'Wheelchair_Accessible', 'Good_For_Kids', 'Good_For_Groups', 'Dogs_Allowed', 'Attire', 'Ambience', 'Noise_Level', 'Alcohol', 'Outdoor_Seating', 'Wifi', 'Has_TV', 'Caters', 'Gender_Neutral_Restrooms','Smoking']
 
-  let misc = `${index}\t`
+  let misc = [];
+  misc.push(`${index}`)
 
   for(let j = 0; j < data.length; j++) {
     if(include() < 3) {
-      misc += `${genAns[random(genAns)]}\t`
+      misc.push(`${genAns[random(genAns)]}`)
     } else {
-      misc += null + '\t';
+      misc.push('\\N');
     }
   }
+
+  misc = misc.join('\t');
 
   return misc + '\n';
 }
@@ -96,19 +100,19 @@ const writeToFile = (filePath, genFunc, entries, encoding, callback) => {
 }
 
 console.time('Generate Times');
-writeToFile('./static/hours.txt', generateTimes, 10000000, 'utf-8', () => {
+writeToFile('./static/hours.csv', generateTimes, 10000000, 'utf-8', () => {
   console.log('Finished writing hours to file');
   console.timeEnd('Generate Times');
 })
 
 console.time('Generate Details');
-writeToFile('./static/details.txt', generateDetails, 10000000, 'utf-8', () => {
+writeToFile('./static/details.csv', generateDetails, 10000000, 'utf-8', () => {
   console.log('Finished writing details to file');
   console.timeEnd('Generate Details');
 })
 
 console.time('Generate Misc');
-writeToFile('./static/misc.txt', generateMisc, 10000000, 'utf-8', () => {
+writeToFile('./static/misc.csv', generateMisc, 10000000, 'utf-8', () => {
   console.log('Finished writing misc to file');
   console.timeEnd('Generate Misc');
 })
