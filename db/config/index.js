@@ -1,13 +1,10 @@
-const Sequelize = require('sequelize');
-const db = new Sequelize('postgres', 'postgres', 'admin', {
-  host: 'localhost',
-  dialect: 'postgres'
-})
+const db = require('mongoose');
 
-db.authenticate()
-  .then(() => {
-    console.log('connected to db');
-  })
-  .catch(err => console.log('failed to connect to db ', err));
+db.connect('mongodb://localhost/yelp', (err) => {
+  if(err) { console.log('Error connecting to database:', err) }
+  else { console.log('Connected to MongoDB') }
+});
 
-module.exports.db = db;
+module.exports = {
+  db
+}

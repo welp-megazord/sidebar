@@ -1,178 +1,59 @@
-const Sequelize = require('sequelize');
+const mongoose = require('mongoose');
 const { db } = require('../config');
-const { resCtrl } = require('../../server/controllers/resCtrl.js');
 
-const Restaurant = db.define('restaurant', {
-  name: {
-    type: Sequelize.STRING,
-    allowNull: false
-  }
-}, { timestamps: false });
+const Schema = mongoose.Schema;
 
-const Detail = db.define('detail', {
-  rid: {
-    type: Sequelize.INTEGER,
-    allowNull: false
-  },
-  Today: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  Price_Range: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  Health_Score: {
-    type: Sequelize.STRING,
-    allowNull: false
-  }
-}, { timestamps: false });
+const detailSchema = new Schema({
+  rid: Number,
+  Today: String,
+  Price_Range: String,
+  Health_Score: String
+});
 
-const Hour = db.define('hour', {
-  rid: {
-    type: Sequelize.INTEGER,
-    allowNull: false
-  },
-  Mon: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  Tue: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  Wed: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  Thu: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  Fri: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  Sat: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  Sun: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-}, { timestamps: false });
+const hourSchema = new Schema({
+  rid: Number,
+  Mon: String,
+  Tue: String,
+  Wed: String,
+  Thu: String,
+  Fri: String,
+  Sat: String,
+  Sun: String
+});
 
-const Misc = db.define('misc', {
-  rid : {
-    type: Sequelize.INTEGER,
-    allowNull: false
-  },
-  Takes_Reservations: {
-    type: Sequelize.STRING,
-    allowNull: true
-  },
-  TakeZout: {
-    type: Sequelize.STRING,
-    allowNull: true
-  },
-  Accepts_Credit_Cards: {
-    type: Sequelize.STRING,
-    allowNull: true
-  },
-  Accepts_Apple_Pay: {
-    type: Sequelize.STRING,
-    allowNull: true
-  },
-  Good_For: {
-    type: Sequelize.STRING,
-    allowNull: true
-  },
-  Parking: {
-    type: Sequelize.STRING,
-    allowNull: true
-  },
-  Bike_Parking: {
-    type: Sequelize.STRING,
-    allowNull: true
-  },
-  Wheelchair_Accessible: {
-    type: Sequelize.STRING,
-    allowNull: true
-  },
-  Good_For_Kids: {
-    type: Sequelize.STRING,
-    allowNull: true
-  },
-  Good_For_Groups: {
-    type: Sequelize.STRING,
-    allowNull: true
-  },
-  Dogs_Allowed: {
-    type: Sequelize.STRING,
-    allowNull: true
-  },
-  Attire: {
-    type: Sequelize.STRING,
-    allowNull: true
-  },
-  Ambience: {
-    type: Sequelize.STRING,
-    allowNull: true
-  },
-  Noise_Level: {
-    type: Sequelize.STRING,
-    allowNull: true
-  },
-  Alcohol: {
-    type: Sequelize.STRING,
-    allowNull: true
-  },
-  Outdoor_Seating: {
-    type: Sequelize.STRING,
-    allowNull: true
-  },
-  Wifi: {
-    type: Sequelize.STRING,
-    allowNull: true
-  },
-  Has_TV: {
-    type: Sequelize.STRING,
-    allowNull: true
-  },
-  Caters: {
-    type: Sequelize.STRING,
-    allowNull: true
-  },
-  Gender_Neutral_Restrooms: {
-    type: Sequelize.STRING,
-    allowNull: true
-  },
-  Smoking: {
-    type: Sequelize.STRING,
-    allowNull: true
-  }
-}, { timestamps: false });
+const miscSchema = new Schema({
+  rid : Number,
+  Takes_Reservations: String,
+  TakeZout: String,
+  Accepts_Credit_Cards: String,
+  Accepts_Apple_Pay: String,
+  Good_For: String,
+  Parking: String,
+  Bike_Parking: String,
+  Wheelchair_Accessible: String,
+  Good_For_Kids: String,
+  Good_For_Groups: String,
+  Dogs_Allowed: String,
+  Attire: String,
+  Ambience: String,
+  Noise_Level: String,
+  Alcohol: String,
+  Outdoor_Seating: String,
+  Wifi: String,
+  Has_TV: String,
+  Caters: String,
+  Gender_Neutral_Restrooms: String,
+  Smoking: String,
+});
 
-// Hour.belongsTo(Restaurant, { foreignKey: { name: 'rid', allowNull: false, constraints: false }, onDelete:  'CASCADE'});
-// Restaurant.hasOne(Hour, { foreignKey: { name: 'rid', allowNull: false, constraints: false }, onDelete: 'CASCADE'});
-// Detail.belongsTo(Restaurant, { foreignKey: { name: 'rid', allowNull: false, constraints: false }, onDelete: 'CASCADE'});
-// Restaurant.hasOne(Detail, { foreignKey: { name: 'rid', allowNull: false, constraints: false }, onDelete: 'CASCADE'});
-// Misc.belongsTo(Restaurant, { foreignKey: { name: 'rid', allowNull: false, constraints: false }, onDelete: 'CASCADE'});
-// Restaurant.hasOne(Misc, { foreignKey: { name: 'rid', allowNull: false, constraints: false }, onDelete: 'CASCADE'});
-
-db.sync({ force: true })
-  .then(() => {
-    resCtrl.post();
-  })
-  .catch(err => console.log('err in table create', err));
-
+let Detail = mongoose.model('Detail', detailSchema);
+let Hour = mongoose.model('Hour', hourSchema);
+let Misc = mongoose.model('Misc', miscSchema);
 
 module.exports = {
   Detail,
   Hour,
-  Misc,
-  Restaurant  
+  Misc
 }
 
 

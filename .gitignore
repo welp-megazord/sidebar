@@ -1,4 +1,4 @@
 node_modules
-hours.csv
-details.csv
-misc.csv
+hours.tsv
+details.tsv
+misc.tsv

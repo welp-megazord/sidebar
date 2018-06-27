@@ -1,36 +1,52 @@
-const { Restaurant } = require('../../db/models');
+const model = require('../../db/models');
 const data = require('./data.js');
 const { db } = require('../../db/config')
 
 const resCtrl = {
   get: (req, res) => {
+    let restaurant = {};
+    model.Detail.findOne({ rid: req.query.rid }, (err, detailsData) => {
+      if (err) { 
+        console.log('Error fetching details via resCtrl:', err)
+        sendResponse(false);
+       } else { 
+        console.log('Details fetched via resCtrl!');
+        restaurant.details = detailsData;
 
+        model.Hour.findOne({ rid: req.query.rid }, (err, hoursData) => {
+          if (err) { 
+            console.log('Error fetching hours via resCtrl:', err)
+            sendResponse(false);
+           } else {
+            console.log('Hours fetched via resCtrl!')
+            restaurant.hours = hoursData;
+
+            model.Misc.findOne({ rid: req.query.rid }, (err, miscData) => {
+              if (err) { 
+                console.log('Error fetching misc via resCtrl:', err)
+                sendResponse(false);
+               } else {
+                console.log('Misc fetched via resCtrl!');
+                restaurant.misc = miscData;
+                sendResponse(true, restaurant);
+              }
+            });
+          }
+        });
+      }
+    });
+
+    sendResponse = (ok, data) => {
+      if (ok) {
+        console.log('All data present!', data);
+        res.send(data).status(200);
+      } else {
+        res.send('Error fetching data').status(404);
+      }
+    }
   },
   post: (req, res) => {
-//     db.queryInterface.bulkInsert('restaurants', data.restaurantData)
-//       .then((data) => {
-//         console.log('inserted restaurant dummies ');
-//       })
-//       .catch((err) => console.log('failed insert restaurant dummies ', err))
-// //     res.status(201).send(data)
-//     db.queryInterface.bulkInsert('hours', data.hoursData)
-//       .then((data) => {
-//       console.log('inserted hours dummies ');
-//   //    res.status(201).send(data)
-//     })
-//       .catch((err) => console.log('failed insert hours dummies ', err))
-//     db.queryInterface.bulkInsert('details', data.detailsData)
-//       .then((data) => {
-//       console.log('inserted details dummies ');
-//   //    res.status(201).send(data)
-//     })
-//       .catch((err) => console.log('failed insert details dummies ', err))
-//     db.queryInterface.bulkInsert('miscs', data.miscData)
-//       .then((data) => {
-//       console.log('inserted misc dummies ');
-//   //    res.status(201).send(data)
-//     })
-//       .catch((err) => console.log('failed insert misc dummies ', err))
+
   }
 }
 
