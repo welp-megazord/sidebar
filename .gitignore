@@ -2,3 +2,6 @@ node_modules
 hours.tsv
 details.tsv
 misc.tsv
+hours.csv
+details.csv
+misc.csv

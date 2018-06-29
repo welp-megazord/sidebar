@@ -18,6 +18,8 @@ router.route('/misc')
 
 router.route('/restaurants')
   .get(resCtrl.get)
-  .post(resCtrl.post);
+  .post(resCtrl.post)
+  .put(resCtrl.put)
+  .delete(resCtrl.delete);
 
 module.exports.router = router;
