@@ -81,6 +81,14 @@ const resCtrl = {
   put: (req, res) => {
     console.log('Data to be updated:', req.body);
     res.send('Put request!').status(200);
+    let id = req.query.rid;
+    model.Detail.findOneAndUpdate({ rid: id }, req.body.details, () => {
+      model.Hour.findOneAndUpdate({ rid: id }, req.body.hours, () => {
+        model.Misc.findOneAndUpdate({ rid: id }, req.body.misc, () => {
+          console.log('Entry', id, 'Updated');
+        })
+      })
+    })
   },
 
   delete: (req, res) => {
