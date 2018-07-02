@@ -2,18 +2,16 @@ const { Misc } = require('../../db/models');
 
 const miscCtrl = {
   get: (req, res) => {
-    Misc.findOne({ rid: req.query.rid })
-      .then(data => {
-        console.log('Misc Data Received from DB:', data);
-        res.status(200).send(data);
-      })
-      .catch(err => {
-        console.log('Failed to get Misc data from DB:', err);
-        res.status(404).send(err);
-      })
-  },
-  post: (req, res) => {
-
+    Misc.findOne({ rid: req.query.rid }, (err, data) => {
+      if (err) { 
+        console.log('Error fetching Misc:', err)
+        res.send('Error').status(404);
+      }
+      else {
+        console.log('Fetched misc from DB');
+        res.send(data).status(200);
+      }
+    })
   }
 }
 

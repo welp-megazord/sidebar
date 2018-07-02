@@ -21,7 +21,7 @@ export default class Home extends Component{
   }
 
   addRestaurants() {
-    const e = Math.floor(Math.random() * 100 + 1);
+    const e = Math.floor(Math.random() * 10000000 + 1);
 //    axios.post('/api/restaurants')
 //      .then((data) => {
         this.getDetails(e);
@@ -37,9 +37,9 @@ export default class Home extends Component{
   getDetails(e) {
     axios('http://localhost:3002/api/details', {params: { rid: e }})  
       .then(details => {
-        delete details.data[0].id;
-        delete details.data[0].rid;
-        this.setState({ details: details.data[0] })
+        delete details.data._id;
+        delete details.data.rid;
+        this.setState({ details: details.data })
       })
       .catch(err => {
         console.log('failed /api/details get ', err);
@@ -49,9 +49,9 @@ export default class Home extends Component{
   getHours(e) {
     axios('http://localhost:3002/api/hours', {params : { rid: e }})
       .then(hours => {
-        delete hours.data[0].id;
-        delete hours.data[0].rid;
-        this.setState({ hours: hours.data[0] })
+        delete hours.data._id;
+        delete hours.data.rid;
+        this.setState({ hours: hours.data })
       })
       .catch(err => {
         console.log('failed to load /api/hours ', err)
@@ -61,9 +61,9 @@ export default class Home extends Component{
   getMisc(e) {
     axios('http://localhost:3002/api/misc', {params: { rid: e }})
       .then(misc => {
-        delete misc.data[0].id;
-        delete misc.data[0].rid;
-        this.setState({ misc: misc.data[0] })
+        delete misc.data._id;
+        delete misc.data.rid;
+        this.setState({ misc: misc.data })
       })
       .catch(err => {
         console.log('failed /api/misc get ', err);

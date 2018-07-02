@@ -1,9 +1,10 @@
 require('dotenv').config();
+require('newrelic');
 const express = require('express');
 const parser = require('body-parser');
 const path = require('path');
-require('../db/config');
 const cors = require('cors');
+require('../db/config');
 
 const { router } = require('./router');
 
