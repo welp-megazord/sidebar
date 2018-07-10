@@ -35,7 +35,7 @@ export default class Home extends Component{
   }
 
   getDetails(e) {
-    axios('http://localhost:3002/api/details', {params: { rid: e }})  
+    axios('http://ec2-34-228-255-16.compute-1.amazonaws.com:3002/api/details', {params: { rid: e }})
       .then(details => {
         delete details.data._id;
         delete details.data.rid;
@@ -47,7 +47,7 @@ export default class Home extends Component{
   }
 
   getHours(e) {
-    axios('http://localhost:3002/api/hours', {params : { rid: e }})
+    axios('http://ec2-34-228-255-16.compute-1.amazonaws.com:3002/api/hours', { params : { rid: e }})
       .then(hours => {
         delete hours.data._id;
         delete hours.data.rid;
@@ -59,7 +59,7 @@ export default class Home extends Component{
   }
 
   getMisc(e) {
-    axios('http://localhost:3002/api/misc', {params: { rid: e }})
+    axios('http://ec2-34-228-255-16.compute-1.amazonaws.com:3002/api/misc', {params: { rid: e }})
       .then(misc => {
         delete misc.data._id;
         delete misc.data.rid;

@@ -100,19 +100,19 @@ const writeToFile = (filePath, genFunc, entries, encoding, callback) => {
 }
 
 console.time('Generate Times');
-writeToFile('./static/hours.tsv', generateTimes, 10000000, 'utf-8', () => {
+writeToFile('./static/dataFiles/hours.tsv', generateTimes, 10000000, 'utf-8', () => {
   console.log('Finished writing hours to file');
   console.timeEnd('Generate Times');
 })
 
 console.time('Generate Details');
-writeToFile('./static/details.tsv', generateDetails, 10000000, 'utf-8', () => {
+writeToFile('./static/dataFiles/details.tsv', generateDetails, 10000000, 'utf-8', () => {
   console.log('Finished writing details to file');
   console.timeEnd('Generate Details');
 })
 
 console.time('Generate Misc');
-writeToFile('./static/misc.tsv', generateMisc, 10000000, 'utf-8', () => {
+writeToFile('./static/dataFiles/misc.tsv', generateMisc, 10000000, 'utf-8', () => {
   console.log('Finished writing misc to file');
   console.timeEnd('Generate Misc');
 })

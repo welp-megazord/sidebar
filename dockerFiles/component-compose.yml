@@ -1,0 +1,7 @@
+version: '2'
+services:
+  component:
+    image: ghumphrey232/welp-sidebar
+    ports:
+      - "3002:3002"
+    
